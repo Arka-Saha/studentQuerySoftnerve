@@ -40,9 +40,9 @@ query = st.text_input("Ask your book or topic-related question:")
 
 if st.button("Submit"):
     if query:
-        st.write("Fetching answer...")
         try:
-            answer = get_resp(query)
+        with st.spinner("Fetching answer..."):
+                answer = get_resp(query)
             st.write(f"Answer: {answer}")
         except APIConnectionError:
             # when internet is not avaialbe it gives api error
